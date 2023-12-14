@@ -33,5 +33,4 @@ class FilamentScoutServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
     }
-
 }

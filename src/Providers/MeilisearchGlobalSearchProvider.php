@@ -18,12 +18,12 @@ class MeilisearchGlobalSearchProvider implements GlobalSearchProvider
         $builder = GlobalSearchResults::make();
 
         foreach (Filament::getResources() as $resource) {
-            /** @var Resource $resource * */
-            if (!$resource::canGloballySearch()) {
+            /** @var resource $resource * */
+            if (! $resource::canGloballySearch()) {
                 continue;
             }
 
-            if (!method_exists($resource::getModel(), 'search')) {
+            if (! method_exists($resource::getModel(), 'search')) {
                 throw new Exception('The model is not searchable. Please add the Laravel Scout trait Searchable to the model.');
             }
 
@@ -74,7 +74,7 @@ class MeilisearchGlobalSearchProvider implements GlobalSearchProvider
                 })
                 ->filter();
 
-            if (!$resourceResults->count()) {
+            if (! $resourceResults->count()) {
                 continue;
             }
 
