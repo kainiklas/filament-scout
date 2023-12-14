@@ -16,11 +16,11 @@ class ScoutGlobalSearchProvider implements GlobalSearchProvider
         $builder = GlobalSearchResults::make();
 
         foreach (Filament::getResources() as $resource) {
-            if (!$resource::canGloballySearch()) {
+            if (! $resource::canGloballySearch()) {
                 continue;
             }
 
-            if (!method_exists($resource::getModel(), 'search')) {
+            if (! method_exists($resource::getModel(), 'search')) {
                 throw new Exception('The model is not searchable. Please add the Laravel Scout trait Searchable to the model.');
             }
 
@@ -44,7 +44,7 @@ class ScoutGlobalSearchProvider implements GlobalSearchProvider
                 })
                 ->filter();
 
-            if (!$resourceResults->count()) {
+            if (! $resourceResults->count()) {
                 continue;
             }
 
