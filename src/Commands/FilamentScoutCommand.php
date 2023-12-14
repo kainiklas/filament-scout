@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Kainiklas\FilamentScout\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class FilamentScoutCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'filament-scout';
 
     public $description = 'My command';
 
