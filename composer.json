@@ -1,10 +1,12 @@
 {
     "name": "kainiklas/filament-scout",
-    "description": "This is my package filament-scout",
+    "description": "Filament Plugin to integrate Scout into Global Search and Table Search.",
     "keywords": [
         "kainiklas",
         "laravel",
-        "filament-scout"
+        "filament-scout",
+        "filament",
+        "filamentphp"
     ],
     "homepage": "https://github.com/kainiklas/filament-scout",
     "support": {
