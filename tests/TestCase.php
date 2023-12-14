@@ -14,21 +14,15 @@ use Filament\SpatieLaravelTranslatablePluginServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use Kainiklas\FilamentScout\FilamentScoutServiceProvider;
 
 class TestCase extends Orchestra
 {
     protected function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Kainiklas\\FilamentScout\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
-        );
     }
 
     protected function getPackageProviders($app)
@@ -43,12 +37,11 @@ class TestCase extends Orchestra
             InfolistsServiceProvider::class,
             LivewireServiceProvider::class,
             NotificationsServiceProvider::class,
-            SpatieLaravelSettingsPluginServiceProvider::class,
-            SpatieLaravelTranslatablePluginServiceProvider::class,
+            //SpatieLaravelSettingsPluginServiceProvider::class,
+            //SpatieLaravelTranslatablePluginServiceProvider::class,
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
-            FilamentScoutServiceProvider::class,
         ];
     }
 

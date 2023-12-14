@@ -4,9 +4,9 @@ namespace Kainiklas\FilamentScout;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Kainiklas\FilamentScout\Providers\ScoutGlobalSearchProvider;
+use Kainiklas\FilamentScout\Providers\MeilisearchGlobalSearchProvider;
 
-class FilamentScoutPlugin implements Plugin
+class FilamentMeilisearchPlugin implements Plugin
 {
     public function getId(): string
     {
@@ -15,7 +15,7 @@ class FilamentScoutPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        $panel->globalSearch(ScoutGlobalSearchProvider::class);
+        $panel->globalSearch(MeilisearchGlobalSearchProvider::class);
     }
 
     public function boot(Panel $panel): void
