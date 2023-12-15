@@ -50,18 +50,20 @@ class ListMyResources extends ListRecords
 
 1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/3.x/panels/resources/global-search). It is sufficient to add `searchable()` to the table as described [here](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout).
 2. (Optional) Add Details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource File as described [here](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
-3. Add the plugin `FilamentScoutPlugin` to your panel configuration, e.g., in `app\Providers\Filament\AdminPanelProvider.php`.
+3. Add the GlobalSearchProvider `ScoutGlobalSearchProvider` to your panel configuration, e.g., in `app\Providers\Filament\AdminPanelProvider.php`.
 
 Example: 
 
 ```php
+use Kainiklas\FilamentScout\Providers\ScoutGlobalSearchProvider;
+
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
             ...
-            ->plugin(FilamentScoutPlugin::make())
+            $panel->globalSearch(ScoutGlobalSearchProvider::class);
             ...
     }
 }
@@ -69,9 +71,9 @@ class AdminPanelProvider extends PanelProvider
 
 ### Meilisearch (BETA)
 
-If you are using [Meilisearch](https://www.meilisearch.com/), you may want to try the plugin `FilamentMeilisearchPlugin` which supports context highlighting.
+If you are using [Meilisearch](https://www.meilisearch.com/), you may want to try the GlobalSearchProvider `MeilisearchGlobalSearchProvider` which supports context highlighting.
 
-If you are using "globalSearchResultDetails" you need to adapt this in the following way:
+If you implement `getGlobalSearchResultDetails()` you need to adapt this in the following way:
 
 ```php
 public static function getGlobalSearchResultDetails(Model $record): array
