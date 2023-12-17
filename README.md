@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/kainiklas/filament-scout/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/kainiklas/filament-scout/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/kainiklas/filament-scout.svg?style=flat-square)](https://packagist.org/packages/kainiklas/filament-scout)
 
-![Filament Scout Plugin](art/filament-scout-plugin.png)
+![Filament Scout Plugin](https://raw.githubusercontent.com/kainiklas/filament-scout/main/art/filament-scout-plugin.png)
 
 Plugin to integrate Laravel Scout into Filament Global Search and Table Search.
 
