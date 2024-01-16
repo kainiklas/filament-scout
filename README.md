@@ -25,7 +25,7 @@ composer require kainiklas/filament-scout
 
 ### Enable Table Search for Resources
 
-To use Scout Search instead of the default search, add the trait `InteractsWithScout` to any Page which contains a table, e.g. `app\Filament\Resources\MyResource\Pages\ListMyResources.php`:
+To use Scout Search instead of the default search on a table, add the trait `InteractsWithScout` to any Page which contains a table, e.g. `app\Filament\Resources\MyResource\Pages\ListMyResources.php`:
 
 ```php
 use Kainiklas\FilamentScout\Traits\InteractsWithScout;
@@ -33,59 +33,104 @@ use Kainiklas\FilamentScout\Traits\InteractsWithScout;
 class ListMyResources extends ListRecords
 {
     use InteractsWithScout;
-
-    protected static string $resource = MyResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\CreateAction::make(),
-        ];
-    }
-
 }
 ```
 
+The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout). Making each column searchable is not required anymore, as the content of what is searchable is defined within scout.
+
 ### Enable Global Search
 
-1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/3.x/panels/resources/global-search). It is sufficient to add `searchable()` to the table as described [here](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout).
-2. (Optional) Add Details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource File as described [here](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
-3. Add the GlobalSearchProvider `ScoutGlobalSearchProvider` to your panel configuration, e.g., in `app\Providers\Filament\AdminPanelProvider.php`.
-
-Example: 
+1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/3.x/panels/resources/global-search). 
+   1. Set a `$recordTitleAttribute` on your resource: [Setting global search result title](https://filamentphp.com/docs/3.x/panels/resources/global-search#setting-global-search-result-titles). 
+   2. (Optional) Add details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource: [Adding extra details to global search results](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
 
 ```php
-use Kainiklas\FilamentScout\Providers\ScoutGlobalSearchProvider;
+class ContractResource extends Resource
+{
+    // required to enable global search
+    protected static ?string $recordTitleAttribute = 'name';
+
+    // optional: details
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Category' => $record->category->name,
+        ];
+    }
+}
+```
+
+2. Add the Plugin `FilamentScoutPlugin` to your panel configuration, e.g., in `app\Providers\Filament\AdminPanelProvider.php`.
+
+```php
+use Kainiklas\FilamentScout\FilamentScoutPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ...
-            $panel->globalSearch(ScoutGlobalSearchProvider::class);
-            ...
+            $plugins([
+                FilamentScoutPlugin::make()
+            ]);
     }
 }
 ```
 
-### Meilisearch (BETA)
+### Meilisearch
 
-If you are using [Meilisearch](https://www.meilisearch.com/), you may want to try the GlobalSearchProvider `MeilisearchGlobalSearchProvider` which supports context highlighting.
+If you are using [Meilisearch](https://www.meilisearch.com/), you can activate meilisearch specific features (search context highlighting):
 
-If you implement `getGlobalSearchResultDetails()` you need to adapt this in the following way:
+1. Configure the plugin.
+
+```php
+use Kainiklas\FilamentScout\FilamentScoutPlugin;
+
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            $plugins([
+                FilamentScoutPlugin::make()
+                    ->useMeiliSearch() // enables meilisearch specific features
+            ]);
+    }
+}
+```
+
+2. (Optional) Implement/ Adapt `getGlobalSearchResultDetails()` in your Resource:
 
 ```php
 public static function getGlobalSearchResultDetails(Model $record): array
     {
+        // change the filament default implementation from this
         // return [
         //     'AttributeTitle' => $record->attribute_name
         // ];
-
+        
+        // to this
         return [
-            'attribute_name' => "AttributeTitle"
+            'scout_attribute_name' => "AttributeTitle"
         ];
+    }
 ```
+
+### Search in Select Form Field
+
+To enable scout search in your select form fields use the provided `ScoutSelect` component:
+
+```php
+use Kainiklas\FilamentScout\Forms\Components\ScoutSelect;
+ 
+ScoutSelect::make('company_id')
+    ->searchable()
+    ->relationship('company', 'name')
+```
+
+Technically, the `ScoutSelect` component inherits from `Filament\Forms\Components\Select`. It changes the `relation()` method such that it overrides the `getSearchResultsUsing()` method to use scout.
+
+*Hint*: Only values which are accessible and defined by scout are searchable.
 
 ## Testing
 

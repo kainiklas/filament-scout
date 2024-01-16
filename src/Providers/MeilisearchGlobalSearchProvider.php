@@ -7,7 +7,6 @@ use Filament\Facades\Filament;
 use Filament\GlobalSearch\Contracts\GlobalSearchProvider;
 use Filament\GlobalSearch\GlobalSearchResult;
 use Filament\GlobalSearch\GlobalSearchResults;
-use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
 
@@ -18,7 +17,7 @@ class MeilisearchGlobalSearchProvider implements GlobalSearchProvider
         $builder = GlobalSearchResults::make();
 
         foreach (Filament::getResources() as $resource) {
-            /** @var resource $resource * */
+            /** @var Filament\Resources\Resource $resource * */
             if (! $resource::canGloballySearch()) {
                 continue;
             }
