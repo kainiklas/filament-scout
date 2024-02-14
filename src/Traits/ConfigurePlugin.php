@@ -4,21 +4,17 @@ namespace Kainiklas\FilamentScout\Traits;
 
 trait ConfigurePlugin
 {
-    // use EvaluatesClosures;
+    protected bool $useMeilisearch = false;
 
-    protected bool $useMeiliSearch = false;
-
-    // protected bool $useScoutInSelect = false;
-
-    public function useMeiliSearch(bool $condition = true): static
+    public function useMeilisearch(bool $condition = true): static
     {
-        $this->useMeiliSearch = $condition;
+        $this->useMeilisearch = $condition;
 
         return $this;
     }
 
-    public function getUseMeiliSearch(): bool
+    public function getUseMeilisearch(): bool
     {
-        return $this->useMeiliSearch;
+        return $this->useMeilisearch;
     }
 }

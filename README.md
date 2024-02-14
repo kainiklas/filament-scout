@@ -9,7 +9,7 @@
 
 <!-- https://banners.beyondco.de/Filament%20Scout.jpeg?theme=light&packageManager=composer+require&packageName=kainiklas%2Ffilament-scout&pattern=plus&style=style_1&description=Laravel+Scout+for+Global+Search%2C+Table+Search+and+Select+Field&md=1&showWatermark=1&fontSize=150px&images=search-circle -->
 
-Plugin to integrate Laravel Scout into Filament Global Search and Table Search. Plus a ScoutSelect component.
+Plugin to integrate Laravel Scout into Filament **Global Search** and **Table Search**. Plus a **ScoutSelect component** which enhances the standard Select Field with scout search capabilities.
 
 ## Pre-Requesites
 
@@ -93,7 +93,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             $plugins([
                 FilamentScoutPlugin::make()
-                    ->useMeiliSearch() // enables meilisearch specific features
+                    ->useMeilisearch() // enables meilisearch specific features
             ]);
     }
 }
