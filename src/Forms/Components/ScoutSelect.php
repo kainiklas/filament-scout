@@ -9,9 +9,13 @@ use Illuminate\Support\Str;
 
 class ScoutSelect extends FilamentSelect
 {
-    public function relationship(string | Closure | null $name = null, string | Closure | null $titleAttribute = null, ?Closure $modifyQueryUsing = null): static
+    public function useScout(bool | Closure $condition = true): static
     {
-        parent::relationship($name, $titleAttribute, $modifyQueryUsing);
+        $useScoutSearch = (bool) $this->evaluate($condition);
+
+        if (!$useScoutSearch) {
+            return $this;
+        }
 
         $this->getSearchResultsUsing(function (ScoutSelect $component, string $search): array {
             $relationship = Relation::noConstraints(fn () => $component->getRelationship());

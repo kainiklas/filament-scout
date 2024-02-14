@@ -5,9 +5,11 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/kainiklas/filament-scout/fix-php-code-styling.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/kainiklas/filament-scout/actions?query=workflow%3A"Fix+PHP+code+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/kainiklas/filament-scout.svg?style=flat-square)](https://packagist.org/packages/kainiklas/filament-scout)
 
-![Filament Scout Plugin](https://raw.githubusercontent.com/kainiklas/filament-scout/main/art/filament-scout-plugin.png)
+![Filament Scout Plugin](https://raw.githubusercontent.com/kainiklas/filament-scout/main/art/filament-scout.jpeg)
 
-Plugin to integrate Laravel Scout into Filament Global Search and Table Search.
+<!-- https://banners.beyondco.de/Filament%20Scout.jpeg?theme=light&packageManager=composer+require&packageName=kainiklas%2Ffilament-scout&pattern=plus&style=style_1&description=Laravel+Scout+for+Global+Search%2C+Table+Search+and+Select+Field&md=1&showWatermark=1&fontSize=150px&images=search-circle -->
+
+Plugin to integrate Laravel Scout into Filament Global Search and Table Search. Plus a ScoutSelect component.
 
 ## Pre-Requesites
 
@@ -21,9 +23,7 @@ You can install the package via composer:
 composer require kainiklas/filament-scout
 ```
 
-## Usage
-
-### Enable Table Search for Resources
+## Table Search
 
 To use Scout Search instead of the default search on a table, add the trait `InteractsWithScout` to any Page which contains a table, e.g. `app\Filament\Resources\MyResource\Pages\ListMyResources.php`:
 
@@ -38,11 +38,11 @@ class ListMyResources extends ListRecords
 
 The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout). Making each column searchable is not required anymore, as the content of what is searchable is defined within scout.
 
-### Enable Global Search
+## Global Search
 
 1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/3.x/panels/resources/global-search). 
-   1. Set a `$recordTitleAttribute` on your resource: [Setting global search result title](https://filamentphp.com/docs/3.x/panels/resources/global-search#setting-global-search-result-titles). 
-   2. (Optional) Add details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource: [Adding extra details to global search results](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
+   - Set a `$recordTitleAttribute` on your resource: [Setting global search result title](https://filamentphp.com/docs/3.x/panels/resources/global-search#setting-global-search-result-titles). 
+   - (Optional) Add details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource: [Adding extra details to global search results](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
 
 ```php
 class ContractResource extends Resource
@@ -116,7 +116,7 @@ public static function getGlobalSearchResultDetails(Model $record): array
     }
 ```
 
-### Search in Select Form Field
+## Select Form Field
 
 To enable scout search in your select form fields use the provided `ScoutSelect` component:
 
@@ -126,9 +126,12 @@ use Kainiklas\FilamentScout\Forms\Components\ScoutSelect;
 ScoutSelect::make('company_id')
     ->searchable()
     ->relationship('company', 'name')
+    ->useScout() // must be called after relationship()
 ```
 
-Technically, the `ScoutSelect` component inherits from `Filament\Forms\Components\Select`. It changes the `relation()` method such that it overrides the `getSearchResultsUsing()` method to use scout.
+Technically, the `ScoutSelect` component inherits from `Filament\Forms\Components\Select`. The `useScout()` method sets a new  `getSearchResultsUsing()` closure which uses scout.
+
+__Important__: The `useScout()` method needs to be called *after* the relationship method. Otherwise it is overriden by the `relationship()` method.
 
 *Hint*: Only values which are accessible and defined by scout are searchable.
 
