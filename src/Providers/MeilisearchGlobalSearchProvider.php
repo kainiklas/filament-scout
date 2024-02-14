@@ -17,7 +17,7 @@ class MeilisearchGlobalSearchProvider implements GlobalSearchProvider
         $builder = GlobalSearchResults::make();
 
         foreach (Filament::getResources() as $resource) {
-            /** @var Filament\Resources\Resource $resource * */
+            /** @var \Filament\Resources\Resource $resource */
             if (! $resource::canGloballySearch()) {
                 continue;
             }
