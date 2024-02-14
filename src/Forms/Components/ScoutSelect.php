@@ -13,7 +13,7 @@ class ScoutSelect extends FilamentSelect
     {
         $useScoutSearch = (bool) $this->evaluate($condition);
 
-        if (!$useScoutSearch) {
+        if (! $useScoutSearch) {
             return $this;
         }
 
