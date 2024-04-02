@@ -2,6 +2,14 @@
 
 All notable changes to `filament-scout` will be documented in this file.
 
+## v.0.3.0 - 2024-04-02
+
+### What's Changed
+
+* Add support for Laravel 11
+
+**Full Changelog**: https://github.com/kainiklas/filament-scout/compare/v0.2.0...v.0.3.0
+
 ## v0.2.0 - 2024-02-14
 
 ### What's Changed
