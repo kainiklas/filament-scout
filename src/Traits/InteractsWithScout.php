@@ -16,8 +16,16 @@ trait InteractsWithScout
             return $query;
         }
 
-        $keys = $this->getModel()::search($search)->keys();
+        $searchLimit = config('kainiklas-filament-scout.search_limit');
+        $primaryKeyName = app($this->getModel())->getKeyName();
 
-        return $query->whereIn('id', $keys);
+        $keys = $this->getModel()::search($search)
+            ->query(function ($query) use ($primaryKeyName) {
+                $query->select($primaryKeyName);
+            })
+            ->paginate($searchLimit, page: 1) // use first page, pagination is done later
+            ->pluck($primaryKeyName);
+
+        return $query->whereIn($primaryKeyName, $keys);
     }
 }
