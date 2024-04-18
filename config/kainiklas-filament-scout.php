@@ -2,5 +2,5 @@
 
 // config for Kainiklas/FilamentScout
 return [
-    'search_limit' => env('SEARCH_LIMIT', 100),
+    'scout_search_limit' => env('SCOUT_SEARCH_LIMIT', 100),
 ];

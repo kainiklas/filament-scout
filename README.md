@@ -36,7 +36,43 @@ class ListMyResources extends ListRecords
 }
 ```
 
-The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout). Making each column searchable is not required anymore, as the content of what is searchable is defined within scout.
+The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout). 
+Making each column searchable is not required anymore, as the content of what is searchable is defined within scout.
+
+### Increase the number of search results
+
+Depending on the scout engine you may have limitations on how many search results you get back.
+This can be adjusted in two places:
+
+#### 1. Search Limit
+
+Add the following `env` variable to adjust the limit of search results:
+
+```
+SCOUT_SEARCH_LIMIT=100
+```
+
+`100` is the default value within this pagacke.
+For example meilisearch has a default limit of `20`.
+
+#### 2. Index Settings (Example for meilisearch)
+
+Within meilisearch there is a default limit of `1000` total hits which is also the upper bound for the search limit.
+That means if you want to have more than `1000` search results, you need to adapt both: the search limit and the index settings.
+The index settings can be adjusted within `config\scout.php`:
+
+```php
+'index-settings' => [
+  MyClass::class => [
+    'pagination' => [
+      'maxTotalHits' => 10000
+    ],
+  ],
+],
+```
+
+Then run the following command to sync the settings: `php artisan scout:sync-index-settings`
+
 
 ## Global Search
 

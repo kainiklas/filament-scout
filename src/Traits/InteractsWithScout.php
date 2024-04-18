@@ -16,14 +16,14 @@ trait InteractsWithScout
             return $query;
         }
 
-        $searchLimit = config('kainiklas-filament-scout.search_limit');
+        $searchLimit = config('kainiklas-filament-scout.scout_search_limit');
         $primaryKeyName = app($this->getModel())->getKeyName();
 
         $keys = $this->getModel()::search($search)
             ->query(function ($query) use ($primaryKeyName) {
                 $query->select($primaryKeyName);
             })
-            ->paginate($searchLimit, page: 1) // use first page, pagination is done later
+            ->paginate($searchLimit, page: 1) // stick with first page, pagination is done later by filament
             ->pluck($primaryKeyName);
 
         return $query->whereIn($primaryKeyName, $keys);
