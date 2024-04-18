@@ -24,6 +24,8 @@ class FilamentScoutServiceProvider extends PackageServiceProvider
                 $command
                     ->askToStarRepoOnGitHub('kainiklas/filament-scout');
             });
+
+        $package->hasConfigFile();
     }
 
     public function packageRegistered(): void
