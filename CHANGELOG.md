@@ -2,6 +2,14 @@
 
 All notable changes to `filament-scout` will be documented in this file.
 
+## v0.4.0 - 2024-04-18
+
+### What's Changed
+
+* Configurable search limit and correct primary key by @kainiklas in https://github.com/kainiklas/filament-scout/pull/11
+
+**Full Changelog**: https://github.com/kainiklas/filament-scout/compare/v0.3.0...v.0.4.0
+
 ## v0.3.0 - 2024-04-02
 
 ### What's Changed
