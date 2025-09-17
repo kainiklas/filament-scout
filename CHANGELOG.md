@@ -2,6 +2,18 @@
 
 All notable changes to `filament-scout` will be documented in this file.
 
+## v0.5.0 - 2025-09-17
+
+### What's Changed
+
+* InteractsWithScout: optimize queries by @RonMelkhior in https://github.com/kainiklas/filament-scout/pull/21
+
+### New Contributors
+
+* @RonMelkhior made their first contribution in https://github.com/kainiklas/filament-scout/pull/21
+
+**Full Changelog**: https://github.com/kainiklas/filament-scout/compare/v0.4.0...v0.5.0
+
 ## v0.4.0 - 2024-04-18
 
 ### What's Changed
