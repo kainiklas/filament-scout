@@ -1,6 +1,6 @@
 <?php
 
-namespace Kainiklas\FilamentScout\Traits;
+namespace Concept7\FilamentScout\Traits;
 
 trait ConfigurePlugin
 {

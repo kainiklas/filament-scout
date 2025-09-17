@@ -1,6 +1,6 @@
 <?php
 
-namespace Kainiklas\FilamentScout;
+namespace Concept7\FilamentScout;
 
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;

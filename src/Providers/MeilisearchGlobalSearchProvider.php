@@ -1,6 +1,6 @@
 <?php
 
-namespace Kainiklas\FilamentScout\Providers;
+namespace Concept7\FilamentScout\Providers;
 
 use Filament\GlobalSearch\Providers\Contracts\GlobalSearchProvider;
 use Filament\Facades\Filament\Resources\Resource;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Kainiklas\FilamentScout;
+namespace Concept7\FilamentScout;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Kainiklas\FilamentScout\Providers\MeilisearchGlobalSearchProvider;
-use Kainiklas\FilamentScout\Providers\ScoutGlobalSearchProvider;
-use Kainiklas\FilamentScout\Traits\ConfigurePlugin;
+use Concept7\FilamentScout\Providers\MeilisearchGlobalSearchProvider;
+use Concept7\FilamentScout\Providers\ScoutGlobalSearchProvider;
+use Concept7\FilamentScout\Traits\ConfigurePlugin;
 
 class FilamentScoutPlugin implements Plugin
 {

@@ -1,24 +1,20 @@
 {
-    "name": "kainiklas/filament-scout",
+    "name": "concept7/filament-scout",
     "description": "Filament Plugin to integrate Scout into Global Search and Table Search.",
     "keywords": [
-        "kainiklas",
+        "concept7",
         "laravel",
         "filament-scout",
         "filament",
         "filamentphp"
     ],
-    "homepage": "https://github.com/kainiklas/filament-scout",
-    "support": {
-        "issues": "https://github.com/kainiklas/filament-scout/issues",
-        "source": "https://github.com/kainiklas/filament-scout"
-    },
+    "homepage": "https://concept7.nl",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kai Niklas",
-            "email": "kai.niklas@web.de",
-            "role": "Developer"
+            "name": "Jurn Spijksma",
+            "email": "jurnskie@gmail.com",
+            "role": "Full-stack Developer"
         }
     ],
     "require": {
@@ -41,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Kainiklas\\FilamentScout\\": "src/"
+            "Concept7\\FilamentScout\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Kainiklas\\FilamentScout\\Tests\\": "tests/"
+            "Concept7\\FilamentScout\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -66,10 +62,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kainiklas\\FilamentScout\\FilamentScoutServiceProvider"
+                "Concept7\\FilamentScout\\FilamentScoutServiceProvider"
             ],
             "aliases": {
-                "FilamentScout": "Kainiklas\\FilamentScout\\Facades\\FilamentScout"
+                "FilamentScout": "Concept7\\FilamentScout\\Facades\\FilamentScout"
             }
         }
     },
