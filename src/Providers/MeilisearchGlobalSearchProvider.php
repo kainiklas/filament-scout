@@ -2,9 +2,10 @@
 
 namespace Kainiklas\FilamentScout\Providers;
 
+use Filament\GlobalSearch\Providers\Contracts\GlobalSearchProvider;
+use Filament\Facades\Filament\Resources\Resource;
 use Exception;
 use Filament\Facades\Filament;
-use Filament\GlobalSearch\Contracts\GlobalSearchProvider;
 use Filament\GlobalSearch\GlobalSearchResult;
 use Filament\GlobalSearch\GlobalSearchResults;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ class MeilisearchGlobalSearchProvider implements GlobalSearchProvider
         $builder = GlobalSearchResults::make();
 
         foreach (Filament::getResources() as $resource) {
-            /** @var \Filament\Resources\Resource $resource */
+            /** @var Resource $resource */
             if (! $resource::canGloballySearch()) {
                 continue;
             }

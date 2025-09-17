@@ -2,9 +2,9 @@
 
 namespace Kainiklas\FilamentScout\Providers;
 
+use Filament\GlobalSearch\Providers\Contracts\GlobalSearchProvider;
 use Exception;
 use Filament\Facades\Filament;
-use Filament\GlobalSearch\Contracts\GlobalSearchProvider;
 use Filament\GlobalSearch\GlobalSearchResult;
 use Filament\GlobalSearch\GlobalSearchResults;
 use Illuminate\Database\Eloquent\Model;
