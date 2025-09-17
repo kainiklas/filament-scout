@@ -1,6 +1,6 @@
 <?php
 
-namespace Kainiklas\FilamentScout\Forms\Components;
+namespace Concept7\FilamentScout\Forms\Components;
 
 use Closure;
 use Filament\Forms\Components\Select as FilamentSelect;
