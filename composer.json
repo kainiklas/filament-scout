@@ -60,6 +60,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "phpstan/extension-installer": true
+        },
+        "audit" : {
+            "block-insecure": false
         }
     },
     "extra": {
@@ -73,8 +76,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "audit": {
-        "block-insecure": false
-    }
+    "prefer-stable": true
 }
