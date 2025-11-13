@@ -2,6 +2,15 @@
 
 All notable changes to `filament-scout` will be documented in this file.
 
+## v1.0.0 - 2025-11-13
+
+### What's Changed
+
+* Support for Filament v4 by @kainiklas in https://github.com/kainiklas/filament-scout/pull/32
+* Bump stefanzweifel/git-auto-commit-action from 6 to 7 by @dependabot[bot] in https://github.com/kainiklas/filament-scout/pull/30
+
+**Full Changelog**: https://github.com/kainiklas/filament-scout/compare/v0.5.0...v1.0.0
+
 ## v0.5.0 - 2025-09-17
 
 ### What's Changed
