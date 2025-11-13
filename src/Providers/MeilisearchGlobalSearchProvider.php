@@ -4,9 +4,9 @@ namespace Kainiklas\FilamentScout\Providers;
 
 use Exception;
 use Filament\Facades\Filament;
-use Filament\GlobalSearch\Contracts\GlobalSearchProvider;
 use Filament\GlobalSearch\GlobalSearchResult;
 use Filament\GlobalSearch\GlobalSearchResults;
+use Filament\GlobalSearch\Providers\Contracts\GlobalSearchProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
 
