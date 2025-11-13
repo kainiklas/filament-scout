@@ -21,6 +21,7 @@ class ScoutSelect extends FilamentSelect
             $relationship = Relation::noConstraints(fn () => $component->getRelationship());
             $qualifiedRelatedKeyName = $component->getQualifiedRelatedKeyNameForRelationship($relationship);
 
+            // @phpstan-ignore-next-line
             return $relationship
                 ->getRelated()
                 ->search($search, function ($scout, string $query, array $options) {

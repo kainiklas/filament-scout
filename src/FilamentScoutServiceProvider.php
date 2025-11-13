@@ -28,11 +28,7 @@ class FilamentScoutServiceProvider extends PackageServiceProvider
         $package->hasConfigFile();
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
-    public function packageBooted(): void
-    {
-    }
+    public function packageBooted(): void {}
 }

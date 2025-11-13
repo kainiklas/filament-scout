@@ -13,7 +13,14 @@ Plugin to integrate Laravel Scout into Filament **Global Search** and **Table Se
 
 ## Pre-Requesites
 
-- [Laravel Scout](https://laravel.com/docs/10.x/scout): Install and configure Laravel Scout as described in the Laravel Docs.
+- [Laravel Scout](https://laravel.com/docs/12.x/scout): Install and configure Laravel Scout as described in the Laravel Docs.
+
+## Supported Filament Versions
+
+| Filament Version | Filament Scout Version |
+| --- | --- |
+| 3.x | 0.x |
+| 4.x | 1.x | 
 
 ## Installation
 
@@ -36,7 +43,7 @@ class ListMyResources extends ListRecords
 }
 ```
 
-The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/3.x/tables/advanced#searching-records-with-laravel-scout). 
+The table defined in the resource needs to be `searchable()` as described in the [Filament table docs](https://filamentphp.com/docs/4.x/tables/overview#searching-records-with-laravel-scout). 
 Making each column searchable is not required anymore, as the content of what is searchable is defined within scout.
 
 ### Increase the number of search results
@@ -76,9 +83,9 @@ Then run the following command to sync the settings: `php artisan scout:sync-ind
 
 ## Global Search
 
-1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/3.x/panels/resources/global-search). 
-   - Set a `$recordTitleAttribute` on your resource: [Setting global search result title](https://filamentphp.com/docs/3.x/panels/resources/global-search#setting-global-search-result-titles). 
-   - (Optional) Add details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource: [Adding extra details to global search results](https://filamentphp.com/docs/3.x/panels/resources/global-search#adding-extra-details-to-global-search-results).
+1. Check how to enable [Global Search in the Filament Documentation](https://filamentphp.com/docs/4.x/resources/global-search). 
+   - Set a `$recordTitleAttribute` on your resource: [Setting global search result title](https://filamentphp.com/docs/4.x/resources/global-search#setting-global-search-result-titles). 
+   - (Optional) Add details by implementing the method `getGlobalSearchResultDetails(Model $record)` in your Resource: [Adding extra details to global search results](https://filamentphp.com/docs/4.x/resources/global-search#adding-extra-details-to-global-search-results).
 
 ```php
 class ContractResource extends Resource
@@ -106,7 +113,7 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            $plugins([
+            ->plugins([
                 FilamentScoutPlugin::make()
             ]);
     }
@@ -127,7 +134,7 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
-            $plugins([
+            ->plugins([
                 FilamentScoutPlugin::make()
                     ->useMeilisearch() // enables meilisearch specific features
             ]);
