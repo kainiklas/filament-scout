@@ -2,6 +2,14 @@
 
 All notable changes to `filament-scout` will be documented in this file.
 
+## v1.1.0 - 2026-01-31
+
+### What's Changed
+
+* Support for Filament v5
+
+**Full Changelog**: https://github.com/kainiklas/filament-scout/compare/v1.0.0...v1.1.0
+
 ## v1.0.0 - 2025-11-13
 
 ### What's Changed
