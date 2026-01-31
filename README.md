@@ -19,8 +19,9 @@ Plugin to integrate Laravel Scout into Filament **Global Search** and **Table Se
 
 | Filament Version | Filament Scout Version |
 | --- | --- |
-| 3.x | 0.x |
-| 4.x | 1.x | 
+| 3 | 0.x |
+| 4 | 1.0 | 
+| 4 / 5 | 1.1 | 
 
 ## Installation
 
